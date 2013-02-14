@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>PhoneGap</title>
+<script type="text/javascript" charset="utf8" src="cordova-2.4.0.js"></script>
+<script type="text/javascript">
+	var HelloPlugin = {
+		callNativeFunction : function() {
+			return cordova.exec(function(winParam) {console.log(winParam);}, function(error) {console.log(winParam);}, "PhonegapBrige", "echo", ["firstArgument", "secondArgument", 42, false]);
+		}
+	};
+	function callNativePlugin(returnSuccess) {
+		HelloPlugin.callNativeFunction();
+	}
+</script>
+</head>
+<body>
+	<h1>Hello PhoneGap</h1>
+	<button onclick="callNativePlugin('success');">Click to invoke
+		the Native Plugin with an SUCCESS!</button>
+	<button onclick="callNativePlugin('error');">Click to invoke
+		the Native Plugin with an ERROR!</button>
+</body>
+</html>
